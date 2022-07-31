@@ -2,16 +2,18 @@ require "./deck"
 
 deck = getDeck()
 
- def getRandomHand(deck) 
-   hand = Array.new
-   for i in 1..7 do 
-     card = deck[rand(deck.length)]
-     hand.push(card)
-     deck.delete_if{|x| x[:id] === card[:id]}
-   end
-   return hand
- end
-
 compHand = getRandomHand(deck)
 playerHand = getRandomHand(deck)
+
+beginningCard = getRandomCard(deck)
+puts "Beginning card is " + printCard(beginningCard) 
+while compHand.length != 0 && playerHand.length != 0 do
+ # play game
+end
+
+if compHand.length === 0
+ puts "Sorry, computer wins!"
+else
+ puts "Congratulations, you win!"
+end
 

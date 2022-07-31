@@ -1,5 +1,6 @@
 require "securerandom"
 
+
 def createCard(value, color)
   return { id: SecureRandom.uuid, value: value, color: color }
 end
@@ -7,7 +8,7 @@ end
 def getDeck
   deck = Array.new
   colors = Array.new
-  colors = ["blue", "yello", "green", "red"] 
+  colors = ["blue", "yellow", "green", "red"] 
   colors.each do |color|
     for j in 0..9 do
       for q in 0..2 do
@@ -28,3 +29,22 @@ def getDeck
   return deck
 end
 
+def getRandomHand(deck) 
+  hand = Array.new
+  for i in 1..7 do 
+    card = deck[rand(deck.length)]
+    hand.push(card)
+    deck.delete_if{|x| x[:id] === card[:id]}
+  end
+  return hand
+end
+
+def getRandomCard(deck)
+  card = deck[rand(deck.length)]
+  deck.delete_if{|x| x[:id] === card[:id]}
+  return card
+end
+
+def printCard(card)
+  return card[:color] + " " + card[:value]
+end
