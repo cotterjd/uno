@@ -15,25 +15,12 @@ def printHand(hand)
   return arr.join(", ")
 end
 
-def playerGoes(deck, hand, topCard)
-  puts "Top card is " + printCard(topCard) 
-  puts "You're turn"
-  puts "Play card: " + printHand(hand)
-  input = gets
-  chosenCard = checkForCard(hand, input)
-  # TODO: add wild logic 
-  if chosenCard.length === 0
-    puts "card " + input + " is not in your hand. Please choose a card from your hand (shown above)"
-    playerGoes(deck, hand, topCard)
-  else 
-    return chosenCard[0]
-  end
-end
-
-def checkForCard(hand, input) 
-  return hand.select{ |c| 
-    cardName = printCard(c)
-    input.chomp.eql?cardName 
+def get_playable_cards(hand, topCard)
+  return hand.select{|card| 
+    card[:color] === topCard[:color] ||
+    card[:value] === topCard[:value]
+    # TODO: add wild logic
+    # card[:value].include? "wild"
   }
-end
+end 
 
