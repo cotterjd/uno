@@ -45,6 +45,3 @@ def getRandomCard(deck)
   return card
 end
 
-def printCard(card)
-  return card[:color] + " " + card[:value]
-end
