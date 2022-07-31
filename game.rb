@@ -26,7 +26,7 @@ def playerGoes(deck, hand, topCard)
     puts "card " + input + " is not in your hand. Please choose a card from your hand (shown above)"
     playerGoes(deck, hand, topCard)
   else 
-    return chosenCard
+    return chosenCard[0]
   end
 end
 

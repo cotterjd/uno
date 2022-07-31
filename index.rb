@@ -11,8 +11,7 @@ playerHand = getRandomHand(deck)
 while compHand.length != 0 && playerHand.length != 0 do
   if turn === "you"
     newTopCard = playerGoes(deck, playerHand, topCard)
-    # TODO: remove card from players hand
-    # playerHand.delete_if{|card| card[:id] === newTopCard[:id]}
+    playerHand.delete_if{|card| card[:id] === newTopCard[:id]}
     topCard = newTopCard
     turn = "comp"
   end
