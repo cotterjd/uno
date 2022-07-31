@@ -1,31 +1,30 @@
+require "securerandom"
+
+def createCard(value, color)
+  return { id: SecureRandom.uuid, value: value, color: color }
+end
+
 def getDeck
   deck = Array.new
   colors = Array.new
   colors = ["blue", "yello", "green", "red"] 
   for i in 0..colors.length-1 do
     for j in 0..9 do
-      deck.push({ value: j.to_s, color: colors[i] })
-      deck.push({ value: j.to_s, color: colors[i] })
+      for q in 0..2 do
+        deck.push(createCard(j.to_s, colors[i]))
+      end
     end
-    deck.push({ value: "skip", color: colors[i] })
-    deck.push({ value: "skip", color: colors[i] })
-    deck.push({ value: "reverse", color: colors[i] })
-    deck.push({ value: "reverse", color: colors[i] })
-    deck.push({ value: "draw 2", color: colors[i] })
-    deck.push({ value: "draw 2", color: colors[i] })
+    for n in 1..2 do 
+      deck.push(createCard("skip",    colors[i]))
+      deck.push(createCard("reverse", colors[i]))
+      deck.push(createCard("draw 2",  colors[i]))
+    end
   end
-  deck.push({ value: "wild", color: "none" })
-  deck.push({ value: "wild", color: "none" })
-  deck.push({ value: "wild", color: "none" })
-  deck.push({ value: "wild", color: "none" })
-  deck.push({ value: "draw 4 wild", color: "none" })
-  deck.push({ value: "draw 4 wild", color: "none" })
-  deck.push({ value: "draw 4 wild", color: "none" })
-  deck.push({ value: "draw 4 wild", color: "none" })
-# TODO: add ids
+  for k in 1..4 do
+    for v in 1..2 do
+      deck.push(createCard("draw 4 wild", "none"))
+    end
+  end
   return deck
 end
 
-
-d = getDeck()
-puts d
