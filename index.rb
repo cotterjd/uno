@@ -2,8 +2,16 @@ require "./deck"
 
 deck = getDeck()
 
-def getRandomHand(deck) 
-  # return 7 random cards from deck
-end
+ def getRandomHand(deck) 
+   hand = Array.new
+   for i in 1..7 do 
+     card = deck[rand(deck.length)]
+     hand.push(card)
+     deck.delete_if{|x| x[:id] === card[:id]}
+   end
+   return hand
+ end
 
 compHand = getRandomHand(deck)
+playerHand = getRandomHand(deck)
+

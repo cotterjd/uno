@@ -8,16 +8,16 @@ def getDeck
   deck = Array.new
   colors = Array.new
   colors = ["blue", "yello", "green", "red"] 
-  for i in 0..colors.length-1 do
+  colors.each do |color|
     for j in 0..9 do
       for q in 0..2 do
-        deck.push(createCard(j.to_s, colors[i]))
+        deck.push(createCard(j.to_s, color))
       end
     end
     for n in 1..2 do 
-      deck.push(createCard("skip",    colors[i]))
-      deck.push(createCard("reverse", colors[i]))
-      deck.push(createCard("draw 2",  colors[i]))
+      deck.push(createCard("skip",    color))
+      deck.push(createCard("reverse", color))
+      deck.push(createCard("draw 2",  color))
     end
   end
   for k in 1..4 do
